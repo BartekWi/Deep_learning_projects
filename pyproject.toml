@@ -1,0 +1,45 @@
+[project]
+name = "Deep_learning_projects"
+version = "0.1.0"
+description = "Machine learning and deep learning project"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    # Core scientific computing
+    "numpy>=2.0.0",
+    "pandas>=2.0.0",
+    "scipy>=1.14.0",
+    "matplotlib>=3.9.0",
+
+    # Machine Learning
+    "scikit-learn>=1.5.0",
+    "joblib>=1.4.0",
+    "tqdm>=4.66.0",
+
+    # PyTorch (installed via the uv source mapping below)
+    "torch>=2.4.0",
+    "torchvision>=0.19.0",
+    "torchaudio>=2.4.0",
+
+    # Jupyter (if running notebooks)
+    "jupyterlab>=4.2.0",
+    "ipywidgets>=8.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "black>=24.0.0",
+    "flake8>=7.0.0",
+]
+
+# PyTorch CUDA 12.6 configuration for uv (omit if using default CPU wheels)
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+torchvision = { index = "pytorch-cu126" }
+torchaudio = { index = "pytorch-cu126" }
